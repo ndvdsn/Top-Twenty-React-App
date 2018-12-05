@@ -14,9 +14,9 @@ const Song = (props) => {
         src={props.audio} controls/>
 
       <div className="details">
-        <h4>Chart position: {props.position}</h4>
         <h4>Title: {props.title}</h4>
         <h4>Artist: {props.artist}</h4>
+        <h4>Position: {props.position}</h4>
       </div>
 
 

@@ -6,7 +6,7 @@ class App extends Component {
   render() {
 
     const genres = [
-      {name: "All", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/json"},
+      {name: "Genre Select: All", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/json"},
       {name: "World", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/genre=19/json"},
       {name: "Soundtrack", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/genre=16/json"},
       {name: "Light Folk", url: "https://itunes.apple.com/gb/rss/topsongs/limit=20/genre=10/json"},
