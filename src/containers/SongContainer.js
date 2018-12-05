@@ -1,25 +1,45 @@
-import React from 'react';
-import SongList from '../components/SongList'
+import React, {Component} from 'react';
+import SongList from '../components/SongList';
+import Song from '../components/Song';
+import Selector from '../components/Selector';
 
-class SongContainer extends React.Component {
+class SongContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
       songs: [],
-      currentSong: null
     };
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   componentDidMount(){
-    fetch("https://itunes.apple.com/gb/rss/topsongs/limit=20/json")
+    this.loadSongs(this.props.genres[0].url)
+  }
+
+  loadSongs(url) {
+    fetch(url)
     .then(response => response.json())
     .then(data => this.setState({songs: data.feed.entry}))
+  }
+
+  handleSelectChange(event) {
+    this.loadSongs(event.target.value);
   }
 
   render(){
     return (
       <div>
-        <SongList songs={this.state.songs}/>
+        <Selector
+          handleSelectChange={this.handleSelectChange}
+          genres={this.props.genres}
+          />
+
+        <SongList
+        songs={this.state.songs}
+        url={this.props.genres[0].url}
+        handleSelectChange={this.handleSelectChange}
+
+        />
       </div>
     )
   }

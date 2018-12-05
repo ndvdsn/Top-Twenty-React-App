@@ -1,12 +1,27 @@
 import React from 'react';
 
-const Song = ({song}) => {
-  if(!song)
+const Song = (props) => {
+  // const altTag = `${this.props.title} by ${this.props.artist}`;
+
   return (
     <div className="song">
+      <img
+        src={props.image}
+      />
+      <audio
+        ref={(audio) => audio = audio}
+        id={'audio' + props.position}
+        src={props.audio} controls/>
 
-    <p>{[song.title]}</p>
-    <p>{[song.artist]}</p>
+      <div className="details">
+        <h4>Chart position: {props.position}</h4>
+        <h4>Title: {props.title}</h4>
+        <h4>Artist: {props.artist}</h4>
+      </div>
+
+
+
+
     </div>
   )
 }

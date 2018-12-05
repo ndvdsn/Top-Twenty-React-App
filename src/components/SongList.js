@@ -3,18 +3,29 @@ import Song from './Song';
 
 const SongList = (props) => {
 
-  const songItems = props.songs.map(song => {
-    return (
-      <Song title={[song.title]} key={[song.id]}>{[song.artist]}</Song>
-    )
-  })
+  if (props.songs == null || props.songs.length === 0) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <div className="song-list">
+    <div>
+      {props.songs.map((song, index) => {
+        return (
+          <Song
+          key={index}
+          position={index + 1}
+          title={song['im:name'].label}
+          artist={song['im:artist'].label}
+          image={song['im:image'][1].label}
+          audio={song.link[1].attributes.href}
+          />
 
-    {songItems}
-
-    </div>
+        )
+      })}
+      </div>
   )
+
+
+
 }
 export default SongList;
